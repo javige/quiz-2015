@@ -39,6 +39,9 @@ exports.index = function(req, res) {
     options.where = {UserId: req.user.id}
   }
   
+  if (req.query.search) {
+	  options = {where: ["pregunta like ?", '%'+req.query.search.replace(/ +/,"%")+'%']};
+  }  
   models.Quiz.findAll(options).then(
     function(quizes) {
       res.render('quizes/index.ejs', {quizes: quizes, errors: []});
