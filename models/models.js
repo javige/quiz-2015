@@ -37,7 +37,7 @@ var Comment = sequelize.import(comment_path);
 // Importar definicion de la tabla Comment
 var user_path = path.join(__dirname,'user');
 var User = sequelize.import(user_path);
-
+git push heroku master
 Comment.belongsTo(Quiz);
 Quiz.hasMany(Comment);
 
