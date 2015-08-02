@@ -21,7 +21,7 @@ var sequelize = new Sequelize(DB_name, user, pwd,
     protocol: protocol,
     port:     port,
     host:     host,
-   // storage:  storage,  // solo SQLite (.env)
+    storage:  storage,  // solo SQLite (.env)
     omitNull: true      // solo Postgres
   }      
 );
@@ -54,6 +54,7 @@ exports.User = User;
 sequelize.sync().then(function() {
   // then(..) ejecuta el manejador una vez creada la tabla
   User.count().then(function (count){
+	console.log(count)
     if(count === 0) {   // la tabla se inicializa solo si está vacía
       User.bulkCreate( 
         [ {username: 'admin',   password: '1234', isAdmin: true},
