@@ -31,6 +31,7 @@ module.exports = function(sequelize, DataTypes) {
                 type: DataTypes.STRING,
                 validate: { notEmpty: {msg: "-> Falta password"}},
                 set: function (password) {
+					console.log(password+key);
                     var encripted = crypto.createHmac('sha1', key).update(password).digest('hex');
                     // Evita passwords vacíos
                     if (password === '') {
