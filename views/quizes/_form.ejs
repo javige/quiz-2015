@@ -2,6 +2,17 @@
 <input type="text" id="preg" name="quiz[pregunta]" value="<%= quiz.pregunta %>"/> <p>
 <label for="resp" class="rem">Respuesta:</label>
 <input type="text" id="resp" name="quiz[respuesta]" value="<%= quiz.respuesta %>"/> <p>
+<label for="cat" class="rem">Categoría:</label>
+<select type="cat" name="quiz[category]" id="cat">
+  <option value="Otra" selected>Otra</option>
+  <option value="Humanidades">Humanidades</option>
+  <option value="Ocio">Ocio</option>
+  <option value="Ciencia">Ciencia</option>
+  <option value="Tecnologia">Tecnología</option>
+</select><p>
+<script>
+document.getElementById('cat').value = "<%= quiz.category %>";
+</script>
 <label for="image" class="rem">Imagen:</label>
 <input type="file" accept="image/*" id="image" name="image"/><p>
 <a href="/quizes"><button type="button">Cancelar</button></a>

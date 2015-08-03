@@ -13,6 +13,10 @@ module.exports = function(sequelize, DataTypes) {
       },
       image: {
         type: DataTypes.STRING
+      },
+      category: {
+        type: DataTypes.ENUM('Humanidades', 'Ocio', 'Ciencia', 'Tecnología', 'Otra'),
+        validate: { notEmpty: {msg: "-> Falta Categoría"}}
       }
     }
   );
