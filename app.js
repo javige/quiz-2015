@@ -46,6 +46,22 @@ app.use(function(req, res, next) {
   next();
 });
 
+//auto-logout
+app.use(function (req, res, next) {
+  var lastreq = req.session.lastreq;
+  
+  req.session.lastreq = Date.now();
+  //para mostrar o no un mensaje de caducidad en layout.ejs  
+  req.session.destroy = false;
+  
+  if (lastreq && (req.session.lastreq - lastreq) >= 120000)  {
+    delete req.session.user;
+    req.session.destroy = true;
+  } 
+   
+  next()
+})
+
 app.use('/', routes);
 
 // catch 404 and forward to error handler
